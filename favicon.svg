@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- The L is a path, not <text>: favicons render text with whatever font
+       the browser happens to pick, so drawing it keeps every tab identical. -->
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8ab4f8"/>
+      <stop offset="0.55" stop-color="#6fd3b8"/>
+      <stop offset="1" stop-color="#e4a15e"/>
+    </linearGradient>
+  </defs>
+  <rect width="32" height="32" rx="7" fill="url(#g)"/>
+  <path d="M11 8 H16 V19 H23 V24 H11 Z" fill="#23262b"/>
+</svg>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lucas Zhou</title>
+<meta name="description" content="I build AI products end to end, and the distributed systems underneath them.">
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+<!-- og:image must be an absolute URL — LinkedIn and Slack will not resolve a
+     relative one, and a card with no image is the usual symptom. -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://lucas1114.github.io/">
+<meta property="og:title" content="Lucas Zhou">
+<meta property="og:description" content="I build AI products end to end, and the distributed systems underneath them.">
+<meta property="og:image" content="https://lucas1114.github.io/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Lucas Zhou — five projects: rag-contract, AI Incident Platform, llm-inference-cp, CaseFlow, Visual Algorithms">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <h1>Lucas Zhou</h1>
+  <p class="tagline">I build AI products end to end, and the distributed systems underneath them.</p>
+  <p class="contact">
+    Open to AI fullstack and backend / distributed systems roles &mdash; reach me on LinkedIn.
+  </p>
+  <nav class="header-links">
+    <a href="https://github.com/Lucas1114">GitHub</a>
+    <a href="https://www.linkedin.com/in/lucas-z-b71a3a217/">LinkedIn</a>
+  </nav>
+</header>
+
+<main>
+  <h2 class="section-heading">Projects</h2>
+
+  <!-- 1 -->
+  <article class="project">
+    <div class="project-body">
+      <h3>rag-contract</h3>
+      <p class="summary">
+        A question-answering service over a fixed corpus of six IETF RFCs, built as a
+        contract rather than a pipeline: what it retrieves is measured, what it cannot
+        support it refuses, and every answer names the index version it came from.
+      </p>
+      <ul class="evidence">
+        <li>recall@5 = 1.00, MRR 0.829 over an annotated question set</li>
+        <li>Retrieval costs 0.026 ms per query against a 150 ms request deadline</li>
+        <li>A quality regression below the committed threshold fails CI</li>
+      </ul>
+      <p class="tech">Python &middot; FastAPI &middot; NumPy &middot; OpenAI embeddings &middot; Fly.io</p>
+      <p class="links">
+        <a class="primary" href="https://rag-contract.fly.dev/">Live demo</a>
+        <a href="https://github.com/Lucas1114/rag-contract">GitHub repo</a>
+        <a href="https://rag-contract.fly.dev/q/q10">See a withdrawn claim</a>
+      </p>
+    </div>
+    <a class="project-figure" href="https://rag-contract.fly.dev/">
+      <img src="assets/rag-contract.jpg" alt="An answered question showing the claim the grounding check withdrew and the rule that withdrew it" width="1400" height="1200">
+    </a>
+  </article>
+
+  <!-- 2 -->
+  <article class="project">
+    <div class="project-body">
+      <h3>AI Incident Investigation Platform</h3>
+      <p class="summary">
+        Turns an incident description into a structured investigation brief. The model
+        returns a schema, not prose, and a leading hypothesis is never presented as a
+        confirmed root cause.
+      </p>
+      <ul class="evidence">
+        <li>Schema-constrained output validated by Pydantic, not parsed from free text</li>
+        <li>Five investigations per client per hour, refused with 429 and Retry-After</li>
+        <li>API key in Google Secret Manager; CI runs tests and the Docker build on every push</li>
+      </ul>
+      <p class="tech">Python &middot; FastAPI &middot; Pydantic &middot; Google Cloud Run &middot; Docker</p>
+      <p class="links">
+        <a class="primary" href="https://ai-incident-platform-152544821369.australia-southeast1.run.app/">Live demo</a>
+        <a href="https://github.com/Lucas1114/ai-incident-platform">GitHub repo</a>
+        <a href="https://ai-incident-platform-152544821369.australia-southeast1.run.app/docs">API docs</a>
+      </p>
+    </div>
+    <a class="project-figure" href="https://ai-incident-platform-152544821369.australia-southeast1.run.app/">
+      <img src="assets/ai-incident.jpg" alt="The platform showing a structured investigation result with severity, evidence and a recommended next action" width="1425" height="1215" loading="lazy">
+    </a>
+  </article>
+
+  <!-- 3 -->
+  <article class="project">
+    <div class="project-body">
+      <h3>llm-inference-cp</h3>
+      <p class="summary">
+        A distributed control plane for LLM inference serving, written in Go. It owns
+        membership, failure detection and routing, and stays out of the data path &mdash;
+        it tells the gateway who to route to, never forwarding a byte itself.
+      </p>
+      <ul class="evidence">
+        <li>One command induces two failures &mdash; a crash and a healthy worker misjudged dead &mdash; and no request is lost</li>
+        <li>Liveness is a phi-accrual suspicion score, not a fixed timeout</li>
+        <li>When a false positive puts two attempts on one request, first-wins adjudication discards the loser</li>
+      </ul>
+      <p class="tech">Go &middot; gRPC &middot; Protobuf &middot; phi-accrual detection</p>
+      <p class="links">
+        <a class="primary" href="https://github.com/Lucas1114/llm-inference-cp">GitHub repo</a>
+        <a href="https://asciinema.org/a/1265378">Watch the raw capture</a>
+        <a href="assets/llm-inference-flow.jpg">The failure path, drawn</a>
+      </p>
+    </div>
+    <a class="project-figure" href="https://asciinema.org/a/1265378">
+      <img src="assets/llm-inference.gif" alt="A terminal recording: a worker is killed mid-request, a healthy worker is frozen until the detector misjudges it, and every request still completes" width="921" height="693" loading="lazy">
+    </a>
+  </article>
+
+  <!-- 4 -->
+  <article class="project">
+    <div class="project-body">
+      <h3>CaseFlow</h3>
+      <p class="summary">
+        A complete case-management slice from React to PostgreSQL. Operators create and
+        assign cases, move them through a status lifecycle, record activity, and see
+        queue totals computed in the database.
+      </p>
+      <ul class="evidence">
+        <li>25 backend tests pass; Flyway owns the schema and applies migrations on startup</li>
+        <li>Three Railway services, with the backend and database on private networking only</li>
+        <li>Local and live deployment both verified end to end, including after a page reload</li>
+      </ul>
+      <p class="tech">React &middot; TypeScript &middot; Spring Boot &middot; PostgreSQL &middot; Railway</p>
+      <p class="links">
+        <a class="primary" href="https://caseflow-frontend-production.up.railway.app">Live demo</a>
+        <a href="https://github.com/Lucas1114/caseflow">GitHub repo</a>
+      </p>
+    </div>
+    <a class="project-figure" href="https://caseflow-frontend-production.up.railway.app">
+      <img src="assets/caseflow.jpg" alt="The CaseFlow case list beside its database-backed workflow summary" width="700" height="360" loading="lazy">
+    </a>
+  </article>
+
+  <!-- 5 -->
+  <article class="project">
+    <div class="project-body">
+      <h3>Visual Algorithms</h3>
+      <p class="summary">
+        Step-by-step animations of Knuth&ndash;Morris&ndash;Pratt, Manacher and Floyd cycle
+        detection. Built twice, five years apart, with both versions deployed side by side.
+      </p>
+      <ul class="evidence">
+        <li>2021: hand-written vanilla JavaScript and SVG, no framework and no build tool</li>
+        <li>2026: rebuilt as a React 19 + TypeScript app, with the algorithm cores ported verbatim, typed and tested</li>
+        <li>Imperative redraw loops became precomputed frame arrays; both builds are live, at / and /legacy/</li>
+      </ul>
+      <p class="tech">React &middot; TypeScript &middot; Vite &middot; SVG &middot; vanilla JS</p>
+      <p class="links">
+        <a class="primary" href="https://visual-algorithms-sandy.vercel.app">Live demo</a>
+        <a href="https://github.com/Lucas1114/Visual-Algorithms">GitHub repo</a>
+        <a href="https://visual-algorithms-sandy.vercel.app/legacy/">The 2021 original</a>
+      </p>
+    </div>
+    <a class="project-figure" href="https://visual-algorithms-sandy.vercel.app">
+      <img src="assets/visual-algorithms.jpg" alt="Visual Algorithms stepping through Manacher's algorithm alongside its decision flowchart" width="1400" height="735" loading="lazy">
+    </a>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <p>
+    <a href="https://github.com/Lucas1114/Lucas1114.github.io">Source for this page</a>
+    &mdash; static HTML and CSS, no framework, nothing loaded from another host.
+  </p>
+</footer>
+
+</body>
+</html>
