@@ -25,10 +25,10 @@ loaded from another host &mdash; every image, the favicon and the Open Graph
 card are served from this repository, so the page does not depend on a CDN
 staying up.
 
-The page is dark only and does not follow the system theme: four of the five
-project screenshots are dark interfaces, so one committed surface is the look
-the images already have. Each screenshot sits on a matte, which lets the one
-light screenshot be framed the same way as the rest.
+The page is dark only and does not follow the system theme: most of the project
+screenshots are dark interfaces, so one committed surface is the look the images
+already have. Each screenshot sits on a matte, so a light
+interface and a dark one are framed the same way.
 
 ## Local preview
 
