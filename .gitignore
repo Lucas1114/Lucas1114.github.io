@@ -1,0 +1,15 @@
+# Private working files — never committed, never pushed.
+CLAUDE.md
+AGENTS.md
+PROJECT_RULES.md
+notes/
+
+# Local environment
+.env
+.env.*
+.DS_Store
+
+# Build output
+/dist
+/build
+node_modules/
