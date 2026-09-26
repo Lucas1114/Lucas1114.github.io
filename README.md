@@ -20,10 +20,10 @@ Ordered by relevance to the roles I am looking for, not by date.
 
 ## How the page is built
 
-One `index.html` and one `style.css`. No framework, no build step, and nothing
-loaded from another host &mdash; every image, the favicon and the Open Graph
-card are served from this repository, so the page does not depend on a CDN
-staying up.
+One `index.html` and one `style.css`. No framework and no build step. Every
+image, the favicon and the Open Graph card are served from this repository.
+The only externally loaded runtime resource is the Google Analytics tag, used
+to measure visits and outbound project-link clicks.
 
 The page is dark only and does not follow the system theme: most of the project
 screenshots are dark interfaces, so one committed surface is the look the images
